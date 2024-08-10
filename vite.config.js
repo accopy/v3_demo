@@ -5,6 +5,7 @@ import AutoImport from "unplugin-auto-import/vite"; //按需自动加载API插�
 import VueSetupExtend from "vite-plugin-vue-setup-extend"; //setup语法糖扩展
 
 import Pages from "vite-plugin-pages"; //自动生成路由
+import { resolve } from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,4 +23,10 @@ export default defineConfig({
       exclude: ["**/components/*.vue"], // 排除在外的目录，即不将所有 components 目录下的 .vue 文件生成路由
     }),
   ],
+  resolve: {
+    // 配置路径别名
+    alias: {
+      "@": resolve(__dirname, "./src"),
+    },
+  },
 });
